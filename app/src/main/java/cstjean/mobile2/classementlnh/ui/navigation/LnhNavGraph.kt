@@ -45,9 +45,13 @@ fun LnhNavGraph() {
     val app = context.applicationContext as ClassementLnhApplication
     val repository = app.repository
 
+    // Le jeton indique si l'utilisateur est connecté
+    val jeton by SessionManager.jeton.collectAsStateWithLifecycle()
+
     Scaffold(
         bottomBar = {
-            NavigationBar {
+            // La barre du bas n'est visible qu'une fois connecté
+            if (jeton != null) NavigationBar {
                 NavigationBarItem(
                     selected = currentDestination?.hasRoute<ClassementRoute>() == true,
                     onClick = {
@@ -72,13 +76,11 @@ fun LnhNavGraph() {
             }
         }
     ) { innerPadding ->
-        val session = SessionManager
-        val jeton by session.jeton.collectAsStateWithLifecycle()
-
-        // Si le jeton est null, on redirige immédiatement vers l'écran de connexion
-        LaunchedEffect(jeton) {
-            val surLaConnexion = navController.currentDestination?.hasRoute<LoginRoute>() == true
-            if (jeton == null && !surLaConnexion) {
+        // Si le jeton est null, on redirige immédiatement vers l'écran de connexion,
+        // aussi quand la destination change (aucun écran protégé sans connexion)
+        LaunchedEffect(jeton, currentDestination) {
+            val surLaConnexion = currentDestination?.hasRoute<LoginRoute>() == true
+            if (jeton == null && currentDestination != null && !surLaConnexion) {
                 navController.navigate(LoginRoute) {
                     popUpTo(navController.graph.id) { inclusive = true }
                 }
