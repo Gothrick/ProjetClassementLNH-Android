@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "93165612135",
-    "project_id": "mobile-2-classementlnh",
-    "storage_bucket": "mobile-2-classementlnh.firebasestorage.app"
+    "project_number": "474180544269",
+    "project_id": "ex5-zo",
+    "storage_bucket": "ex5-zo.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:93165612135:android:cb4b746f5177d0ce27f8c2",
+        "mobilesdk_app_id": "1:474180544269:android:3ce59d4531f09e85d53244",
         "android_client_info": {
           "package_name": "cstjean.mobile2.classementlnh"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBoL6bXkRm4p7baYDOzfI2lUUCEuwJ9B34"
+          "current_key": "AIzaSyAzuW5HuhFSc9mgNj1fvWHJ7BpSFqci8Ss"
         }
       ],
       "services": {
